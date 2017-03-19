@@ -11,6 +11,11 @@ import todolistController from './controllers/todolist';
 // express application
 const app = express();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 // parse req.body json
 app.use(bodyParser.json());
 // parse form data

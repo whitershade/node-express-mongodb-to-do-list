@@ -2,7 +2,6 @@
 
 import Todolist from '../models/todolist';
 
-
 exports.all = (req, res) => {
   Todolist.all((err, docs) => {
     if (err) {
@@ -25,7 +24,7 @@ exports.findById = (req, res) => {
 
 exports.create = (req, res) => {
   const artist = {
-    name: req.body.name,
+    text: req.body.text,
   };
   Todolist.create(artist, (err) => {
     if (err) {
@@ -37,7 +36,7 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  Todolist.update(req.params.id, { name: req.body.name }, (err) => {
+  Todolist.update(req.params.id, { text: req.body.text }, (err) => {
     if (err) {
       global.console.log(err);
       return res.sendStatus(500);
